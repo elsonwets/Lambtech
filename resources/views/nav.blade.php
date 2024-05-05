@@ -2533,6 +2533,7 @@ License: For each use you must have a valid license purchased only from above li
 			</span>
     <!--end::Svg Icon-->
 </div>
+@yield('content')
 <!--end::Scrolltop-->
 <!--end::Main-->
 <script>var hostUrl = "assets/";</script>
