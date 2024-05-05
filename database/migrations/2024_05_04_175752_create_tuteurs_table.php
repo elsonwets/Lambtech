@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('tuteurs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('utilisateur_id');
+            $table->string('nom');
+            $table->string('prénom');
+            $table->string('adresse')->nullable();
+            $table->string('email');
+            $table->string('numéro_tel')->nullable();
             $table->timestamps();
+
+            // Définition de la contrainte de clé étrangère
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs');
         });
     }
 

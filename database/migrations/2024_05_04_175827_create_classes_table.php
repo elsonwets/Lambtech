@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
+            $table->string('niveau');
+            $table->string('nom_classe');
+            $table->unsignedBigInteger('annee_scolaire_id');
             $table->timestamps();
+
+            // Contrainte de clé étrangère
+            $table->foreign('annee_scolaire_id')->references('id')->on('annee_scolaires');
         });
     }
 

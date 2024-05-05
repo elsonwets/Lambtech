@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('document_académiques', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('etudiant_id');
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
+            $table->text('description')->nullable();
+            $table->string('fichier');
         });
     }
 

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('etudiant_id');
+            $table->foreign('etudiant_id')->references('id')->on('etudiants');
+            $table->decimal('montant', 8, 2); // 8 chiffres au total, 2 chiffres après la virgule
+            $table->string('mode_paiement');
+            $table->string('mois_paiement');
+            $table->date('date_paiement');
             $table->timestamps();
         });
     }

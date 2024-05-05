@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('professeurs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('utilisateur_id');
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('adresse')->nullable();
+            $table->string('email')->unique();
+            $table->string('numero_tel')->nullable();
             $table->timestamps();
         });
     }

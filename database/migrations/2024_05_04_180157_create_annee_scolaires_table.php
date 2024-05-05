@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('annee_scolaires', function (Blueprint $table) {
             $table->id();
+            $table->string('annee');
+            $table->date('date_debut');
+            $table->date('date_fin');
             $table->timestamps();
         });
     }
