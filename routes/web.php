@@ -53,7 +53,8 @@ Route::get('/document', function () {
 
 Route::get('/offre', function () {
     return view('offre');
-})->name('offre');
+})->name('offres');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
