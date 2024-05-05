@@ -7,59 +7,69 @@ use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Afficher la liste des annonces
     public function index()
     {
-        //
+        $annonces = Annonce::all();
+        return view('annonces.index', compact('annonces'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Afficher le formulaire de création d'une nouvelle annonce
     public function create()
     {
-        //
+        return view('annonces.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Enregistrer une nouvelle annonce dans la base de données
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titre' => 'required',
+            'contenu' => 'required',
+            'date_publication' => 'required|date',
+            'utilisateur_id' => 'required|exists:utilisateurs,id',
+        ]);
+
+        Annonce::create($request->all());
+
+        return redirect()->route('annonces.index')
+            ->with('success', 'Annonce créée avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Afficher les détails d'une annonce spécifique
     public function show(Annonce $annonce)
     {
-        //
+        return view('annonces.show', compact('annonce'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Afficher le formulaire pour éditer une annonce spécifique
     public function edit(Annonce $annonce)
     {
-        //
+        return view('annonces.edit', compact('annonce'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Mettre à jour les informations d'une annonce spécifique dans la base de données
     public function update(Request $request, Annonce $annonce)
     {
-        //
+        $request->validate([
+            'titre' => 'required',
+            'contenu' => 'required',
+            'date_publication' => 'required|date',
+            'utilisateur_id' => 'required|exists:utilisateurs,id',
+        ]);
+
+        $annonce->update($request->all());
+
+        return redirect()->route('annonces.index')
+            ->with('success', 'Informations de l\'annonce mises à jour avec succès.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Supprimer une annonce spécifique de la base de données
     public function destroy(Annonce $annonce)
     {
-        //
+        $annonce->delete();
+
+        return redirect()->route('annonces.index')
+            ->with('success', 'Annonce supprimée avec succès.');
     }
 }

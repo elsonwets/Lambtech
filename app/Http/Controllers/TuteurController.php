@@ -7,59 +7,67 @@ use Illuminate\Http\Request;
 
 class TuteurController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Afficher la liste des tuteurs
     public function index()
     {
-        //
+        $tuteurs = Tuteur::all();
+        return view('tuteurs.index', compact('tuteurs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Afficher le formulaire de création d'un nouveau tuteur
     public function create()
     {
-        //
+        return view('tuteurs.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Enregistrer un nouveau tuteur dans la base de données
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'prénom' => 'required',
+            'email' => 'required|email|unique:tuteurs',
+        ]);
+
+        Tuteur::create($request->all());
+
+        return redirect()->route('tuteurs.index')
+            ->with('success', 'Tuteur créé avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Afficher les détails d'un tuteur spécifique
     public function show(Tuteur $tuteur)
     {
-        //
+        return view('tuteurs.show', compact('tuteur'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Afficher le formulaire pour éditer un tuteur spécifique
     public function edit(Tuteur $tuteur)
     {
-        //
+        return view('tuteurs.edit', compact('tuteur'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Mettre à jour les informations d'un tuteur spécifique dans la base de données
     public function update(Request $request, Tuteur $tuteur)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'prénom' => 'required',
+            'email' => 'required|email|unique:tuteurs,email,'.$tuteur->id,
+        ]);
+
+        $tuteur->update($request->all());
+
+        return redirect()->route('tuteurs.index')
+            ->with('success', 'Informations du tuteur mises à jour avec succès.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Supprimer un tuteur spécifique de la base de données
     public function destroy(Tuteur $tuteur)
     {
-        //
+        $tuteur->delete();
+
+        return redirect()->route('tuteurs.index')
+            ->with('success', 'Tuteur supprimé avec succès.');
     }
 }

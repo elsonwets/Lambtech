@@ -8,58 +8,75 @@ use Illuminate\Http\Request;
 class ConversationController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche la liste de toutes les conversations.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $conversations = Conversation::all();
+        return view('conversations.index', compact('conversations'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affiche le formulaire de création d'une nouvelle conversation.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('conversations.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stocke une nouvelle conversation dans la base de données.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        // Valide les données du formulaire
+        $request->validate([
+            'utilisateur1_id' => 'required|exists:utilisateurs,id',
+            'utilisateur2_id' => 'required|exists:utilisateurs,id',
+        ]);
+
+        // Crée une nouvelle conversation
+        Conversation::create($request->all());
+
+        // Redirige l'utilisateur vers une page de confirmation ou de liste des conversations
+        return redirect()->route('conversations.index')->with('success', 'Conversation ajoutée avec succès.');
     }
 
     /**
-     * Display the specified resource.
+     * Affiche les détails d'une conversation spécifique.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(Conversation $conversation)
+    public function show($id)
     {
-        //
+        $conversation = Conversation::findOrFail($id);
+        return view('conversations.show', compact('conversation'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Supprime la conversation spécifiée de la base de données.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Conversation $conversation)
+    public function destroy($id)
     {
-        //
+        // Recherche la conversation
+        $conversation = Conversation::findOrFail($id);
+
+        // Supprime la conversation
+        $conversation->delete();
+
+        // Redirige l'utilisateur vers une page de confirmation ou de liste des conversations
+        return redirect()->route('conversations.index')->with('success', 'Conversation supprimée avec succès.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Conversation $conversation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Conversation $conversation)
-    {
-        //
-    }
 }

@@ -45,8 +45,8 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Logo-->
                     <h1>
                         <a href="#" class="mb-12" style="text-decoration: none;">
-                            <span style="color: blue;">ISI</span>
-                            <span style="color: violet;">GO</span>
+                            <span style="color: blue;">Demande </span>
+                            <span style="color: violet;">d'inscription</span>
                         </a>
                     </h1>
 
@@ -54,73 +54,28 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Logo-->
 					<!--begin::Wrapper-->
 					<div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-						<!--begin::Form-->
-						<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="post" action="{{route('dologin')}}">
-							<!--begin::Heading-->
-                            @csrf
-							<div class="text-center mb-10">
-								<!--begin::Title-->
-								<h1 class="text-dark mb-3">Sign In to ISI GO</h1>
-								<!--end::Title-->
-								<!--begin::Link-->
-								<div class="text-gray-400 fw-bold fs-4">New Here?
-								<a href="../../demo4/dist/authentication/flows/basic/sign-up.html" class="link-primary fw-bolder">Create an Account</a></div>
-								<!--end::Link-->
-							</div>
-							<!--begin::Heading-->
-							<!--begin::Input group-->
-							<div class="fv-row mb-10">
-								<!--begin::Label-->
-								<label class="form-label fs-6 fw-bolder text-dark">Email</label>
-								<!--end::Label-->
-								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
-								<!--end::Input-->
-							</div>
-							<!--end::Input group-->
-							<!--begin::Input group-->
-							<div class="fv-row mb-10">
-								<!--begin::Wrapper-->
-								<div class="d-flex flex-stack mb-2">
-									<!--begin::Label-->
-									<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
-									<!--end::Label-->
-									<!--begin::Link-->
-									<a href="../../demo4/dist/authentication/flows/basic/password-reset.html" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
-									<!--end::Link-->
-								</div>
-								<!--end::Wrapper-->
-								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
-								<!--end::Input-->
-							</div>
-							<!--end::Input group-->
-							<!--begin::Actions-->
-							<div class="text-center">
-                                <button class="btn btn-lg btn-primary w-100 mb-5">
-                                    Continue
-                                </button>
+                        <div class="informations">
+                            <h2>Informations personnelles</h2>
+                            <ul>
+                                <li><strong>Prénom :</strong> Habib</li>
+                                <li><strong>Nom :</strong> Diallo</li>
+                                <li><strong>Email :</strong> diallohabib@gmail.com</li>
+                                <li><strong>Date de naissance :</strong> 01/01/1999</li>
+                                <li><strong>Téléphone :</strong> 0123456789</li>
+                            </ul>
 
-								<!--begin::Separator-->
-								<div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
-								<!--end::Separator-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-								<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Continue with Google</a>
-								<!--end::Google link-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-								<img alt="Logo" src="assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />Continue with Facebook</a>
-								<!--end::Google link-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
-								<img alt="Logo" src="assets/media/svg/brand-logos/apple-black.svg" class="h-20px me-3" />Continue with Apple</a>
-								<!--end::Google link-->
-							</div>
-							<!--end::Actions-->
-						</form>
-						<!--end::Form-->
-					</div>
+                            <h2>Informations sur l'inscription</h2>
+                            <ul>
+                                <li><strong>Montant à payer :</strong> 100 000</li>
+                                <li><strong>Mensualité :</strong> 50 000</li>
+                                <li><strong>Coût total de la formation :</strong> 600 000</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-lg btn-primary w-100 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Payer ici l'inscription
+                        </button>
+
+                    </div>
 					<!--end::Wrapper-->
 				</div>
 				<!--end::Content-->
@@ -151,4 +106,57 @@ License: For each use you must have a valid license purchased only from above li
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Paiement frais inscription</h5>
+
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Sélectionner le mode de paiement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <input type="checkbox" id="wave" name="payment_method" value="wave">
+                        <label for="wave">WAVE</label>
+                        <input type="checkbox" id="orange_money" name="payment_method" value="orange_money">
+                        <label for="orange_money">ORANGE MONEY</label>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Payer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <!-- Ajoutez d'autres boutons ou actions ici -->
+                </div>
+            </div>
+        </div>
+    </div>
 </html>
+
+<style>
+    .informations {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .informations h2 {
+        margin-top: 0;
+    }
+
+    .informations ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .informations ul li {
+        margin-bottom: 10px;
+    }
+
+</style>

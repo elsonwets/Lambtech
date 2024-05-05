@@ -8,58 +8,77 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche la liste de tous les messages.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        return view('messages.index', compact('messages'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Affiche le formulaire de création d'un nouveau message.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        // Ton code pour afficher le formulaire de création de message
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stocke un nouveau message dans la base de données.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        // Valide les données du formulaire
+        $request->validate([
+            'expediteur_id' => 'required|exists:utilisateurs,id',
+            'destinataire_id' => 'required|exists:utilisateurs,id',
+            'contenu' => 'required|string',
+            'date_envoi' => 'nullable|date',
+        ]);
+
+        // Crée un nouveau message
+        Message::create($request->all());
+
+        // Redirige l'utilisateur vers une page de confirmation ou de liste des messages
+        return redirect()->route('messages.index')->with('success', 'Message envoyé avec succès.');
     }
 
     /**
-     * Display the specified resource.
+     * Affiche les détails d'un message spécifique.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        //
+        $message = Message::findOrFail($id);
+        return view('messages.show', compact('message'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Supprime le message spécifié de la base de données.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function destroy($id)
     {
-        //
+        // Recherche le message
+        $message = Message::findOrFail($id);
+
+        // Supprime le message
+        $message->delete();
+
+        // Redirige l'utilisateur vers une page de confirmation ou de liste des messages
+        return redirect()->route('messages.index')->with('success', 'Message supprimé avec succès.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Message $message)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Message $message)
-    {
-        //
-    }
 }

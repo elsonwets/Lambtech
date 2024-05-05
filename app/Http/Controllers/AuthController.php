@@ -9,6 +9,7 @@ class AuthController extends Controller
 {
     public function dologin(Request $request): \Illuminate\Http\RedirectResponse
     {
+        /*
         $request->validate([
             'email'=> 'required|email',
             'password'=> 'required|min:4'
@@ -26,10 +27,17 @@ class AuthController extends Controller
         return redirect()->route('welcome')->withErrors([
             'email'=> "L'email ou le mot de passe est incorrect"
         ]);
+        */
+        return redirect()->route('home');
     }
     public function deconnexion()
     {
         Auth::logout();
-        return redirect()->route('welcome');
+        return redirect()->route('signin');
+    }
+    public function demande()
+    {
+
+        return redirect()->route('demande');
     }
 }

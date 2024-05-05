@@ -128,12 +128,13 @@ License: For each use you must have a valid license purchased only from above li
 
                     </div>
                     <div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" class="menu-item py-3">
+                        <a href="{{route('document')}}">
 								<span class="menu-link menu-center" title="General Pages" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
 									<span class="menu-icon me-0">
 										<i class="bi bi-file-text fs-2"></i>
 									</span>
 								</span>
-
+                        </a>
                     </div>
                     <div data-kt-menu-trigger="click" data-kt-menu-placement="right-start" class="menu-item py-3">
 								<span class="menu-link menu-center" title="Resources" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
@@ -201,7 +202,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Page title-->
                         <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-20 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_wrapper'}">
                             <!--begin::Heading-->
-                            <h1 class="text-dark fw-bolder my-1 fs-3 lh-1">Dashboard</h1>
+                            <h1 class="text-dark fw-bolder my-1 fs-3 lh-1"></h1>
                             <!--end::Heading-->
                         </div>
                         <!--end::Page title=-->
@@ -215,40 +216,13 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Menu-->
                                 <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-600 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold fs-6 my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
                                     <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item here show menu-lg-down-accordion me-lg-1">
-                                        <a class="menu-link active py-3" href="../../demo4/dist/index.html">
-                                            <span class="menu-title">Dashboards</span>
+                                        <a class="menu-link active py-3" href="{{route('offre')}}">
+                                            <span class="menu-title">Offre de stage & emploie</span>
                                             <span class="menu-arrow d-lg-none"></span>
                                         </a>
 
                                     </div>
-                                    <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3">
-													<span class="menu-title">Crafted</span>
-													<span class="menu-arrow d-lg-none"></span>
-												</span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3">
-													<span class="menu-title">Apps</span>
-													<span class="menu-arrow d-lg-none"></span>
-												</span>
-
-                                    </div>
-                                    <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3">
-													<span class="menu-title">Resources</span>
-													<span class="menu-arrow d-lg-none"></span>
-												</span>
-
-                                    </div>
-                                    <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3">
-													<span class="menu-title">Mega Menu</span>
-													<span class="menu-arrow d-lg-none"></span>
-												</span>
-
-                                    </div>
                                 </div>
                                 <!--end::Menu-->
                             </div>
@@ -960,14 +934,14 @@ License: For each use you must have a valid license purchased only from above li
                             <!--end::Avatar-->
                             <!--begin::Details-->
                             <div class="ms-3">
-                                <a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+                                <a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Elson</a>
                                 <span class="text-muted fs-7 mb-1">2 mins</span>
                             </div>
                             <!--end::Details-->
                         </div>
                         <!--end::User-->
                         <!--begin::Text-->
-                        <div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?</div>
+                        <div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">bonjour comment tu va et le cours de php tu a finit le TD</div>
                         <!--end::Text-->
                     </div>
                     <!--end::Wrapper-->
@@ -993,7 +967,7 @@ License: For each use you must have a valid license purchased only from above li
                         </div>
                         <!--end::User-->
                         <!--begin::Text-->
-                        <div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub.</div>
+                        <div class="p-5 rounded bg-light-primary text-dark fw-bold mw-lg-400px text-end" data-kt-element="message-text">oui on a fait le cour avec le prof en corrigeant le td</div>
                         <!--end::Text-->
                     </div>
                     <!--end::Wrapper-->
@@ -1013,13 +987,13 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin::Details-->
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                <span class="text-muted fs-7 mb-1">1 Hour</span>
+
                             </div>
                             <!--end::Details-->
                         </div>
                         <!--end::User-->
                         <!--begin::Text-->
-                        <div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">Ok, Understood!</div>
+                        <div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">Ok, tu m'envoie la correction!</div>
                         <!--end::Text-->
                     </div>
                     <!--end::Wrapper-->

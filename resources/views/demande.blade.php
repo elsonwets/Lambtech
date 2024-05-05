@@ -45,8 +45,8 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Logo-->
                     <h1>
                         <a href="#" class="mb-12" style="text-decoration: none;">
-                            <span style="color: blue;">ISI</span>
-                            <span style="color: violet;">GO</span>
+                            <span style="color: blue;">Demande </span>
+                            <span style="color: violet;">d'inscription</span>
                         </a>
                     </h1>
 
@@ -57,16 +57,16 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Form-->
 						<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="post" action="{{route('dologin')}}">
 							<!--begin::Heading-->
+                            <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+                                <h1>
+                                    <a href="#" class="mb-12" style="text-decoration: none;">
+                                        <span style="color: blue;">ISI </span>
+                                        <span style="color: violet;">GO</span>
+                                    </a>
+                                </h1>
+                            </div>
                             @csrf
-							<div class="text-center mb-10">
-								<!--begin::Title-->
-								<h1 class="text-dark mb-3">Sign In to ISI GO</h1>
-								<!--end::Title-->
-								<!--begin::Link-->
-								<div class="text-gray-400 fw-bold fs-4">New Here?
-								<a href="../../demo4/dist/authentication/flows/basic/sign-up.html" class="link-primary fw-bolder">Create an Account</a></div>
-								<!--end::Link-->
-							</div>
+
 							<!--begin::Heading-->
 							<!--begin::Input group-->
 							<div class="fv-row mb-10">
@@ -83,16 +83,83 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Wrapper-->
 								<div class="d-flex flex-stack mb-2">
 									<!--begin::Label-->
-									<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">Prenom</label>
 									<!--end::Label-->
 									<!--begin::Link-->
-									<a href="../../demo4/dist/authentication/flows/basic/password-reset.html" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
 									<!--end::Link-->
 								</div>
 								<!--end::Wrapper-->
 								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+								<input class="form-control form-control-lg form-control-solid" type="text" name="prenom" autocomplete="off" />
 								<!--end::Input-->
+							</div>
+                            <div class="fv-row mb-10">
+								<!--begin::Wrapper-->
+								<div class="d-flex flex-stack mb-2">
+									<!--begin::Label-->
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">Nom</label>
+									<!--end::Label-->
+									<!--begin::Link-->
+									<!--end::Link-->
+								</div>
+								<!--end::Wrapper-->
+								<!--begin::Input-->
+								<input class="form-control form-control-lg form-control-solid" type="text" name="Nom" autocomplete="off" />
+								<!--end::Input-->
+							</div>
+                            <div class="fv-row mb-10">
+								<!--begin::Wrapper-->
+								<div class="d-flex flex-stack mb-2">
+									<!--begin::Label-->
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">date de naissance</label>
+									<!--end::Label-->
+									<!--begin::Link-->
+
+									<!--end::Link-->
+								</div>
+								<!--end::Wrapper-->
+								<!--begin::Input-->
+								<input class="form-control form-control-lg form-control-solid" type="date" name="date" autocomplete="off" />
+								<!--end::Input-->
+							</div>
+                            <div class="fv-row mb-10">
+								<!--begin::Wrapper-->
+								<div class="d-flex flex-stack mb-2">
+									<!--begin::Label-->
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">classe</label>
+									<!--end::Label-->
+									<!--begin::Link-->
+
+									<!--end::Link-->
+								</div>
+								<!--end::Wrapper-->
+								<!--begin::Input-->
+                                <select class="form-select form-select-lg form-select-solid" name="licence">
+                                    <option value="licence1">Licence 1</option>
+                                    <option value="licence2">Licence 2</option>
+                                    <option value="licence3">Licence 3</option>
+                                </select>
+
+                                <!--end::Input-->
+							</div>
+                            <div class="fv-row mb-10">
+								<!--begin::Wrapper-->
+								<div class="d-flex flex-stack mb-2">
+									<!--begin::Label-->
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">Spécialité</label>
+									<!--end::Label-->
+									<!--begin::Link-->
+									<!--end::Link-->
+								</div>
+								<!--end::Wrapper-->
+								<!--begin::Input-->
+                                <select class="form-select form-select-lg form-select-solid" name="licence">
+                                    <option value="licence1">Genie Logiciel</option>
+                                    <option value="licence2">Gestion</option>
+                                    <option value="licence3">Intelligence Artificiel</option>
+                                </select>
+
+                                <!--end::Input-->
 							</div>
 							<!--end::Input group-->
 							<!--begin::Actions-->
@@ -101,21 +168,6 @@ License: For each use you must have a valid license purchased only from above li
                                     Continue
                                 </button>
 
-								<!--begin::Separator-->
-								<div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
-								<!--end::Separator-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-								<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Continue with Google</a>
-								<!--end::Google link-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-								<img alt="Logo" src="assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />Continue with Facebook</a>
-								<!--end::Google link-->
-								<!--begin::Google link-->
-								<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
-								<img alt="Logo" src="assets/media/svg/brand-logos/apple-black.svg" class="h-20px me-3" />Continue with Apple</a>
-								<!--end::Google link-->
 							</div>
 							<!--end::Actions-->
 						</form>

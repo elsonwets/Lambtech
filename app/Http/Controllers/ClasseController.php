@@ -7,59 +7,67 @@ use Illuminate\Http\Request;
 
 class ClasseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Afficher la liste des classes
     public function index()
     {
-        //
+        $classes = Classe::all();
+        return view('classes.index', compact('classes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Afficher le formulaire de création d'une nouvelle classe
     public function create()
     {
-        //
+        return view('classes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Enregistrer une nouvelle classe dans la base de données
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'niveau' => 'required',
+            'nom_classe' => 'required',
+            'annee_scolaire_id' => 'required|exists:annee_scolaires,id',
+        ]);
+
+        Classe::create($request->all());
+
+        return redirect()->route('classes.index')
+            ->with('success', 'Classe créée avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Afficher les détails d'une classe spécifique
     public function show(Classe $classe)
     {
-        //
+        return view('classes.show', compact('classe'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Afficher le formulaire pour éditer une classe spécifique
     public function edit(Classe $classe)
     {
-        //
+        return view('classes.edit', compact('classe'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Mettre à jour les informations d'une classe spécifique dans la base de données
     public function update(Request $request, Classe $classe)
     {
-        //
+        $request->validate([
+            'niveau' => 'required',
+            'nom_classe' => 'required',
+            'annee_scolaire_id' => 'required|exists:annee_scolaires,id',
+        ]);
+
+        $classe->update($request->all());
+
+        return redirect()->route('classes.index')
+            ->with('success', 'Informations de la classe mises à jour avec succès.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Supprimer une classe spécifique de la base de données
     public function destroy(Classe $classe)
     {
-        //
+        $classe->delete();
+
+        return redirect()->route('classes.index')
+            ->with('success', 'Classe supprimée avec succès.');
     }
 }
